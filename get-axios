@@ -1,0 +1,21 @@
+// URL da API
+const url = 'https://jsonplaceholder.typicode.com/todos'; // Substitua pela sua URL
+
+// Realizar a requisição GET
+axios.get(url)
+  .then((response) => {
+    const data = response.data;
+
+    // Seleciona a div id que vai colocar a resposta
+    const linha = document.getElementById('row-linha');
+
+    // Itera sobre os dados recebidos
+    data.forEach((item) => { // Cria um item de lista para cada usuário
+      const linhaItem = document.createElement('li');
+      linhaItem.textContent = ` ${item.title} - ${item.content}`;
+      linha.appendChild(linhaItem);
+    });
+  })
+  .catch((error) => {
+     console.error('Erro ao buscar os dados:', error);
+  });
